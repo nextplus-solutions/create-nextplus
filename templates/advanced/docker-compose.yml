@@ -1,0 +1,35 @@
+services:
+  payload:
+    image: oven/bun:1
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/home/bun/app
+      - node_modules:/home/bun/app/node_modules
+    working_dir: /home/bun/app/
+    command: sh -c "bun install && bun run dev"
+    depends_on:
+      - postgres
+    env_file:
+      - .env
+    environment:
+      # Overrides .env's DATABASE_URL: within the compose network, postgres
+      # is reachable at the service name, not 127.0.0.1.
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/your-database-name
+
+  postgres:
+    image: postgres:17-alpine
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: your-database-name
+    volumes:
+      - data:/var/lib/postgresql/data
+    logging:
+      driver: none
+
+volumes:
+  data:
+  node_modules:

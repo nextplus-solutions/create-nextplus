@@ -1,0 +1,24 @@
+{
+  "name": "create-nextplus",
+  "version": "0.0.1",
+  "type": "module",
+  "private": true,
+  "bin": {
+    "create-nextplus": "./src/index.ts"
+  },
+  "scripts": {
+    "test": "bun test src"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/fs-extra": "^11.0.4"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@clack/prompts": "^1.7.0",
+    "fs-extra": "^11.4.0",
+    "picocolors": "^1.1.1"
+  }
+}
