@@ -1,11 +1,23 @@
 {
-  "name": "create-nextplus",
+  "name": "@nextplus-solutions/create-nextplus",
   "version": "0.0.1",
   "type": "module",
-  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nextplus-solutions/create-nextplus.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
+  },
   "bin": {
     "create-nextplus": "./src/index.ts"
   },
+  "files": [
+    "src",
+    "!src/**/*.test.ts",
+    "templates"
+  ],
   "scripts": {
     "test": "bun test src"
   },
